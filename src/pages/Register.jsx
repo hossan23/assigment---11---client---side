@@ -23,15 +23,15 @@ const Register = () => {
  };
 
  return (
-  <div className="hero min-h-screen bg-base-200">
+  <div className="hero min-h-screen bg-[#FFEDE8]">
    <div className="hero-content flex-col lg:flex-row-reverse">
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className="card flex-shrink-0 w-full md:w-96 shadow-2xl bg-base-100">
      <form onSubmit={handleRegister} className="card-body">
       <div className="form-control">
        <label className="label">
         <span className="label-text">Name</span>
        </label>
-       <input type="text" name="name" placeholder="your name" className="input input-bordered" required />
+       <input type="text" name="name" placeholder="your name" className="input input-bordered" />
       </div>
       {/* name */}
       <div className="form-control">

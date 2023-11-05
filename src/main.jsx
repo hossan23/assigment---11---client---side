@@ -12,6 +12,7 @@ import MyBids from './pages/MyBids';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import AuthProvider from './AuthProvider';
+import BidRequests from './pages/BidRequests';
 
 const router = createBrowserRouter([
  {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
    {
     path: '/login',
     element: <Login></Login>,
+   },
+   {
+    path: '/bidRequests',
+    element: <BidRequests></BidRequests>,
    },
   ],
  },
