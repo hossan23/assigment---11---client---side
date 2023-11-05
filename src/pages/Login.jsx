@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -6,6 +6,7 @@ const Login = () => {
  const { login, googleLogin } = useContext(AuthContext);
  const navigate = useNavigate();
  const location = useLocation();
+ const [error, setError] = useState();
 
  const handleLogin = e => {
   e.preventDefault();
@@ -19,6 +20,7 @@ const Login = () => {
     console.log(res.user);
    })
    .catch(error => {
+    setError(error.message);
     console.log(error.message);
    });
  };
@@ -47,6 +49,9 @@ const Login = () => {
         <span className="label-text">Password</span>
        </label>
        <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+      </div>
+      <div>
+       <small>{error}</small>
       </div>
       <div className="form-control mt-6 space-y-2">
        <button type="submit" className="btn btn-primary">

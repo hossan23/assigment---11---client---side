@@ -39,8 +39,8 @@ const Navbar = () => {
  };
 
  return (
-  <div className="container mx-auto bg-base-100">
-   <div className="navbar bg-base-100 py-5">
+  <div className="bg-red-100">
+   <div className="navbar bg-red-100 py-5 container mx-auto">
     <div className="navbar-start">
      <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -59,9 +59,13 @@ const Navbar = () => {
     </div>
     <div className="navbar-end">
      {user ? (
-      <Link onClick={handleLogout} className="btn btn-info">
-       Logout
-      </Link>
+      <div className="flex items-center justify-center space-x-2">
+       <h6 className="font-medium hidden md:block">{user.displayName}</h6>
+       <img src={user.photoURL} className="w-10 h-10 rounded-full" />
+       <Link onClick={handleLogout} className="btn btn-info">
+        Logout
+       </Link>
+      </div>
      ) : (
       <Link to="/login" className="btn btn-info">
        Login

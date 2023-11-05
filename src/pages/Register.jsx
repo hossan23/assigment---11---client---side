@@ -1,9 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
  const { register } = useContext(AuthContext);
+ const [error, setError] = useState();
+ const navigate = useNavigate();
 
  const handleRegister = e => {
   e.preventDefault();
@@ -14,12 +16,14 @@ const Register = () => {
   const photo = form.photo.value;
   register(email, password)
    .then(res => {
+    form.reset();
+    navigate('/');
     console.log(res.user);
    })
    .catch(error => {
+    setError(error.message);
     console.log(error.message);
    });
-  form.reset();
  };
 
  return (
@@ -52,6 +56,9 @@ const Register = () => {
         <span className="label-text">Password</span>
        </label>
        <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+      </div>
+      <div>
+       <small>{error}</small>
       </div>
       <div className="form-control mt-6">
        <button type="submit" className="btn btn-primary">

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorElement from './pages/ErrorElement';
-import Home from './pages/Home';
+
 import Root from './Root';
 import AddJobs from './pages/AddJobs';
 import MyPostedJobs from './pages/MyPostedJobs';
@@ -14,6 +14,10 @@ import Login from './pages/Login';
 import AuthProvider from './AuthProvider';
 import BidRequests from './pages/BidRequests';
 import PrivateRoute from './PrivateRoute';
+import Home from './pages/home/Home';
+
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+import JobDetails from './pages/home/JobDetails';
 
 const router = createBrowserRouter([
  {
@@ -65,14 +69,27 @@ const router = createBrowserRouter([
      </PrivateRoute>
     ),
    },
+   {
+    path: '/jobs/:id',
+    element: (
+     <PrivateRoute>
+      <JobDetails></JobDetails>
+     </PrivateRoute>
+    ),
+    loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`),
+   },
   ],
  },
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root')).render(
  <React.StrictMode>
-  <AuthProvider>
-   <RouterProvider router={router} />
-  </AuthProvider>
+  <QueryClientProvider client={queryClient}>
+   <AuthProvider>
+    <RouterProvider router={router} />
+   </AuthProvider>
+  </QueryClientProvider>
  </React.StrictMode>
 );
