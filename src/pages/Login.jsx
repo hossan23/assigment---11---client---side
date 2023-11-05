@@ -1,9 +1,11 @@
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
  const { login, googleLogin } = useContext(AuthContext);
+ const navigate = useNavigate();
+ const location = useLocation();
 
  const handleLogin = e => {
   e.preventDefault();
@@ -12,12 +14,13 @@ const Login = () => {
   const password = form.password.value;
   login(email, password)
    .then(res => {
+    form.reset();
+    navigate(location?.pathname ? location.state : '/');
     console.log(res.user);
    })
    .catch(error => {
     console.log(error.message);
    });
-  form.reset();
  };
 
  const handleGoogle = e => {

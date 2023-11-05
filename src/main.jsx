@@ -13,6 +13,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import AuthProvider from './AuthProvider';
 import BidRequests from './pages/BidRequests';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
  {
@@ -26,15 +27,27 @@ const router = createBrowserRouter([
    },
    {
     path: '/addJob',
-    element: <AddJobs></AddJobs>,
+    element: (
+     <PrivateRoute>
+      <AddJobs></AddJobs>
+     </PrivateRoute>
+    ),
    },
    {
     path: '/myPostedJobs',
-    element: <MyPostedJobs></MyPostedJobs>,
+    element: (
+     <PrivateRoute>
+      <MyPostedJobs></MyPostedJobs>,
+     </PrivateRoute>
+    ),
    },
    {
     path: '/myBids',
-    element: <MyBids></MyBids>,
+    element: (
+     <PrivateRoute>
+      <MyBids></MyBids>
+     </PrivateRoute>
+    ),
    },
    {
     path: '/register',
@@ -46,7 +59,11 @@ const router = createBrowserRouter([
    },
    {
     path: '/bidRequests',
-    element: <BidRequests></BidRequests>,
+    element: (
+     <PrivateRoute>
+      <BidRequests></BidRequests>
+     </PrivateRoute>
+    ),
    },
   ],
  },
