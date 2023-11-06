@@ -46,7 +46,7 @@ const JobDetails = () => {
        <div className="card-body">
         <h2 className="card-title">{job_title}</h2>
         <p>{description}</p>
-        <div className="card-actions justify-end items-center font-medium">
+        <div className="card-actions items-center font-medium">
          <div className="badge badge-outline p-3">
           Price : ${min_price} - {max_price}$
          </div>

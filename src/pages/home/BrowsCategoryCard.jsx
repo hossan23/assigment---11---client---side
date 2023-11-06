@@ -9,6 +9,7 @@ const BrowsCategoryCard = ({ data }) => {
   <div className="card bg-base-100 shadow-xl">
    <div className="card-body">
     <h2 className="card-title">{job_title}</h2>
+    <hr />
     <p>{description}</p>
     <div className="card-actions justify-between items-center font-medium">
      <div className="space-x-4">

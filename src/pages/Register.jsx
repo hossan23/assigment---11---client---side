@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
  const { register } = useContext(AuthContext);
@@ -16,6 +17,12 @@ const Register = () => {
   const photo = form.photo.value;
   register(email, password)
    .then(res => {
+    updateProfile(res.user, {
+     displayName: name,
+     photoURL: photo,
+    })
+     .then(() => console.log('profile updated'))
+     .catch(error => console.log(error.message));
     form.reset();
     navigate('/');
     console.log(res.user);
@@ -27,7 +34,7 @@ const Register = () => {
  };
 
  return (
-  <div className="hero min-h-screen bg-[#FFEDE8]">
+  <div className="hero min-h-screen ">
    <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="card flex-shrink-0 w-full md:w-96 shadow-2xl bg-base-100">
      <form onSubmit={handleRegister} className="card-body">

@@ -34,7 +34,7 @@ const Login = () => {
    });
  };
  return (
-  <div className="hero min-h-screen bg-[#FFEDE8]">
+  <div className="hero min-h-screen ">
    <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="card flex-shrink-0 w-full md:w-96 shadow-2xl bg-base-100">
      <form onSubmit={handleLogin} className="card-body">
