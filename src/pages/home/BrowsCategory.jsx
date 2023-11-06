@@ -21,7 +21,7 @@ const BrowsCategory = () => {
 
  return (
   <Tabs>
-   <TabList className="text-center font-medium">
+   <TabList className="text-center font-medium mb-10 ">
     <Tab>Web Development</Tab>
     <Tab>Digital Marketing</Tab>
     <Tab>Graphics Design</Tab>
@@ -29,7 +29,7 @@ const BrowsCategory = () => {
 
    <TabPanel>
     <h2>Any content 1</h2>
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 ">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
      {webDevelopment?.map(data => (
       <BrowsCategoryCard key={data._id} data={data}></BrowsCategoryCard>
      ))}
@@ -37,7 +37,7 @@ const BrowsCategory = () => {
    </TabPanel>
    <TabPanel>
     <h2>Any content 2</h2>
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
      {digitalMarketing?.map(data => (
       <BrowsCategoryCard key={data._id} data={data}></BrowsCategoryCard>
      ))}
@@ -45,7 +45,7 @@ const BrowsCategory = () => {
    </TabPanel>
    <TabPanel>
     <h2>Any content 3</h2>
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
      {graphicsDesign?.map(data => (
       <BrowsCategoryCard key={data._id} data={data}></BrowsCategoryCard>
      ))}

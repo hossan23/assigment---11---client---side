@@ -6,16 +6,18 @@ const BrowsCategoryCard = ({ data }) => {
  const { _id, email, job_title, deadline, description, category, min_price, max_price } = data;
 
  return (
-  <div className="card  bg-base-100 shadow-xl">
-   <div className="card-body font-medium">
+  <div className="card bg-base-100 shadow-xl">
+   <div className="card-body">
     <h2 className="card-title">{job_title}</h2>
-    <p className="">{deadline}</p>
-    <p className="">
-     {min_price}$ - {max_price}$
-    </p>
-    <small>{description}</small>
-    <div className="card-actions justify-end">
-     <Link to={`/jobs/${_id}`} className="btn btn-primary">
+    <p>{description}</p>
+    <div className="card-actions justify-between items-center font-medium">
+     <div className="space-x-4">
+      <div className="badge badge-outline p-3">
+       Price : ${min_price} - {max_price}$
+      </div>
+      <div className="badge badge-outline p-3">Deadline : {deadline}</div>
+     </div>
+     <Link to={`/jobs/${_id}`} className="btn btn-primary capitalize">
       Bid Now
      </Link>
     </div>

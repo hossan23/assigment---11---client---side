@@ -1,9 +1,12 @@
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const AddJobs = () => {
  const { user } = useContext(AuthContext);
+ const navigate = useNavigate();
  const handleAddJob = e => {
   e.preventDefault();
   const form = e.target;
@@ -18,7 +21,11 @@ const AddJobs = () => {
   axios
    .post('http://localhost:5000/jobs', myData)
    .then(res => {
-    console.log(res.data);
+    if (res.data.insertedId) {
+     swal('Good job!', 'Bid Successful!', 'success');
+     navigate('/myPostedJobs');
+     console.log(res.data);
+    }
    })
    .catch(error => {
     console.log(error.message);
@@ -33,7 +40,7 @@ const AddJobs = () => {
      <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
       Email
      </label>
-     <input type="email" id="email" name="email" defaultValue={user.email} className="input input-bordered focus:outline-none w-full font-medium " />
+     <input type="email" id="email" name="email" defaultValue={user.email} readOnly className="input input-bordered focus:outline-none w-full font-medium " />
     </div>
     <div className="mb-4">
      <label htmlFor="job_title" className="block text-gray-700 font-bold mb-2">
