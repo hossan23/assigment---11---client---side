@@ -7,8 +7,7 @@ import ErrorElement from './pages/ErrorElement';
 
 import Root from './Root';
 import AddJobs from './pages/AddJobs';
-import MyPostedJobs from './pages/MyPostedJobs';
-import MyBids from './pages/MyBids';
+
 import Register from './pages/Register';
 import Login from './pages/Login';
 import AuthProvider from './AuthProvider';
@@ -16,8 +15,10 @@ import BidRequests from './pages/BidRequests';
 import PrivateRoute from './PrivateRoute';
 import Home from './pages/home/Home';
 
-import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import JobDetails from './pages/home/JobDetails';
+import MyBids from './pages/myBids/MyBids';
+import MyPostedJobs from './pages/MyPostedJobs';
 
 const router = createBrowserRouter([
  {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
     path: '/myPostedJobs',
     element: (
      <PrivateRoute>
-      <MyPostedJobs></MyPostedJobs>,
+      <MyPostedJobs></MyPostedJobs>
      </PrivateRoute>
     ),
    },

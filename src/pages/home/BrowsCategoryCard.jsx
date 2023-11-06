@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 /* eslint-disable react/prop-types */
 const BrowsCategoryCard = ({ data }) => {
  //  console.log(Object.keys(data).join(','));
- const { _id, email, job_title, deadline, description, category, min_price, max_price } = data;
+ const { _id, job_title, deadline, description, min_price, max_price } = data;
 
  return (
   <div className="card bg-base-100 shadow-xl">

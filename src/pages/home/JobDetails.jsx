@@ -9,19 +9,19 @@ const JobDetails = () => {
  const data = useLoaderData();
  const navigate = useNavigate();
  //  console.log(Object.keys(data).join(','));
- const { _id, email, job_title, deadline, description, category, min_price, max_price } = data;
+ const { email, job_title, deadline, description, min_price, max_price } = data;
 
  const handleBidProjects = e => {
   e.preventDefault();
   const form = e.target;
   const price = form.price.value;
   const deadline = form.deadline.value;
-  const bidderEmail = form.email.value;
+  const email = form.email.value;
   const buyerEmail = form.buyerEmail.value;
   const bid_Project_Data = {
    price,
    deadline,
-   bidderEmail,
+   email,
    buyerEmail,
   };
 

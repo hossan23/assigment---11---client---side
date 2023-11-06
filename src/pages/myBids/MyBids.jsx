@@ -1,10 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-
 import { useContext } from 'react';
-import { AuthContext } from '../AuthProvider';
-import ErrorElement from './ErrorElement';
+import { AuthContext } from '../../AuthProvider';
+import ErrorElement from '../ErrorElement';
 
-const MyPostedJobs = () => {
+const MyBids = () => {
  const { user } = useContext(AuthContext);
  const {
   isPending,
@@ -12,7 +11,7 @@ const MyPostedJobs = () => {
   data: allData,
  } = useQuery({
   queryKey: ['repoData'],
-  queryFn: () => fetch(`http://localhost:5000/jobs?email=${user?.email}`).then(res => res.json()),
+  queryFn: () => fetch(`http://localhost:5000/bids?email=${user?.email}`).then(res => res.json()),
  });
 
  if (isPending) return <span className="loading loading-bars loading-lg"></span>;
@@ -22,10 +21,13 @@ const MyPostedJobs = () => {
  return (
   <div>
    {allData.map(duta => (
-    <p key={duta._id}>{duta.job_title}</p>
+    <p key={duta._id}>
+     {/* {duta.price} */}
+     {duta.email}
+    </p>
    ))}
   </div>
  );
 };
 
-export default MyPostedJobs;
+export default MyBids;
