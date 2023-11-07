@@ -24,6 +24,7 @@ const JobDetails = () => {
    deadline,
    email,
    buyerEmail,
+   status: 'pending',
   };
 
   axios

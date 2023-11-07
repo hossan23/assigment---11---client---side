@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const Login = () => {
  const { login, googleLogin } = useContext(AuthContext);
@@ -16,6 +17,7 @@ const Login = () => {
   login(email, password)
    .then(res => {
     form.reset();
+    swal('Good job!', 'Logged in Successfully!', 'success');
     navigate(location?.pathname ? location.state : '/');
     console.log(res.user);
    })

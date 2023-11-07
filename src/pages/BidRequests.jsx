@@ -10,29 +10,46 @@ const BidRequests = () => {
  const {
   isPending,
   error,
+  refetch,
   data: allData,
  } = useQuery({
   queryKey: ['repoData'],
   queryFn: () => axios.get(`http://localhost:5000/bids`).then(res => res.data),
  });
+
  const filter = allData?.filter(oneData => oneData.email !== user.email);
 
  if (isPending) return <Loader></Loader>;
 
  if (error) return <ErrorElement></ErrorElement>;
 
- const { _id } = allData;
-
- const handleAccept = () => {
-  console.log('handleAccept', _id);
-  //   axios.put(`http://localhost:5000/bids/${_id}`);
+ const handleAccept = _id => {
+  axios
+   .patch(`http://localhost:5000/bids/${_id}`, { status: 'in progress' })
+   .then(res => {
+    refetch();
+    console.log(res.data);
+   })
+   .catch(err => console.log(err.message));
+  refetch();
  };
 
- console.log(filter);
+ const handleReject = _id => {
+  axios
+   .patch(`http://localhost:5000/bids/${_id}`, { status: 'canceled' })
+   .then(res => {
+    refetch();
+    console.log(res.data);
+   })
+   .catch(err => console.log(err.message));
+  refetch();
+ };
+
  return (
-  <div>
-   <div className="overflow-x-auto">
-    <h1>Bid request</h1>
+  <div className="h-screen">
+   <h1 className="text-center text-2xl font-semibold my-4">Bid Request</h1>
+   <hr />
+   <div className="overflow-x-auto font-medium">
     <table className="table">
      {/* head */}
      <thead>
@@ -47,19 +64,26 @@ const BidRequests = () => {
       </tr>
      </thead>
      {filter?.map(oneData => (
-      <tbody key={oneData._id}>
+      <tbody key={oneData._id} className="text-lg">
        {/* row 1 */}
        <tr>
         <th>1</th>
         <td>{oneData.job_title}</td>
-        <td>{oneData.email}</td>
+        <td>Bidder : {oneData.email}</td>
         <td>{oneData.deadline}</td>
         <td>{oneData.price}</td>
-        <td className="font-bold">Pending</td>
-        <td onClick={() => handleAccept(_id)} className="btn btn-success mr-2">
-         Accept
-        </td>
-        <td className="btn btn-error">Reject</td>
+        <td className="font-bold">{oneData.status}</td>
+
+        {oneData.status === 'pending' && (
+         <td onClick={() => handleAccept(oneData._id)} className="btn btn-success mr-2">
+          Accept
+         </td>
+        )}
+        {oneData.status === 'pending' && (
+         <td onClick={() => handleReject(oneData._id)} className="btn btn-error">
+          Reject
+         </td>
+        )}
        </tr>
        {/* row 2 */}
       </tbody>

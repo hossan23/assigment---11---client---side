@@ -22,7 +22,7 @@ const UpdateMyPostedJobs = () => {
   const max_price = form.max_price.value;
   const myData = { email, job_title, deadline, description, category, min_price, max_price };
   axios
-   .put(`http://localhost:5000/jobs/${_id}`, myData)
+   .patch(`http://localhost:5000/jobs/${_id}`, myData)
    .then(res => {
     if (res.data.modifiedCount) {
      swal('Good job!', 'Bid Successful!', 'success');

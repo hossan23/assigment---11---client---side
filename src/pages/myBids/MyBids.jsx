@@ -10,6 +10,7 @@ const MyBids = () => {
  const {
   isPending,
   error,
+  refetch,
   data: allData,
  } = useQuery({
   queryKey: ['repoData'],
@@ -20,9 +21,21 @@ const MyBids = () => {
 
  if (error) return <ErrorElement></ErrorElement>;
 
+ const handleAccept = _id => {
+  axios
+   .patch(`http://localhost:5000/bids/${_id}`, { status: 'complete' })
+   .then(res => {
+    refetch();
+    console.log(res.data);
+   })
+   .catch(err => console.log(err.message));
+ };
+
  return (
-  <div>
-   <div className="overflow-x-auto">
+  <div className="h-screen">
+   <h1 className="text-center text-2xl font-semibold my-4">My Bids</h1>
+   <hr />
+   <div className="overflow-x-auto font-medium">
     <table className="table">
      {/* head */}
      <thead>
@@ -36,15 +49,20 @@ const MyBids = () => {
       </tr>
      </thead>
      {allData.map(oneData => (
-      <tbody key={oneData._id}>
+      <tbody key={oneData._id} className="text-lg">
        {/* row 1 */}
        <tr>
         <th>1</th>
         <td>{oneData.job_title}</td>
         <td>Owner : {oneData.buyerEmail}</td>
         <td>{oneData.deadline}</td>
-        <td className="font-bold">Pending</td>
-        <td>Blue</td>
+        <td className="font-bold">{oneData.status}</td>
+        {(oneData.status === 'Pending' && <td className="btn bg-red-500 disabled">Accept</td>) ||
+         (oneData.status === 'in progress' && (
+          <td className="btn btn-success" onClick={() => handleAccept(oneData._id)}>
+           Accept
+          </td>
+         ))}
        </tr>
        {/* row 2 */}
       </tbody>

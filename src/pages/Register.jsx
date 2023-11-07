@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
+import swal from 'sweetalert';
 
 const Register = () => {
  const { register } = useContext(AuthContext);
@@ -24,6 +25,7 @@ const Register = () => {
      .then(() => console.log('profile updated'))
      .catch(error => console.log(error.message));
     form.reset();
+    swal('Good job!', 'Account Created Successfully!', 'success');
     navigate('/');
     console.log(res.user);
    })
