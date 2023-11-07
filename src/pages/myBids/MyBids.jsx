@@ -42,10 +42,10 @@ const MyBids = () => {
       <tr>
        <th></th>
        <th>Job Title</th>
-       <th>Email</th>
+       <th>Job owner Email</th>
        <th>Deadline</th>
        <th>Status</th>
-       <th>Complete button</th>
+       <th>Respond</th>
       </tr>
      </thead>
      {allData.map(oneData => (
@@ -54,7 +54,7 @@ const MyBids = () => {
        <tr>
         <th>1</th>
         <td>{oneData.job_title}</td>
-        <td>Owner : {oneData.buyerEmail}</td>
+        <td>{oneData.buyerEmail}</td>
         <td>{oneData.deadline}</td>
         <td className="font-bold">{oneData.status}</td>
         {(oneData.status === 'Pending' && <td className="btn bg-red-500 disabled">Accept</td>) ||

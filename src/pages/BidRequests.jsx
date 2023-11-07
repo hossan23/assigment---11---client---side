@@ -56,11 +56,11 @@ const BidRequests = () => {
       <tr>
        <th></th>
        <th>Job Title</th>
-       <th>Email</th>
+       <th>Bidder Email</th>
        <th>Deadline</th>
        <th>Price</th>
        <th>Status</th>
-       <th>Complete button</th>
+       <th>Respond</th>
       </tr>
      </thead>
      {filter?.map(oneData => (
@@ -69,7 +69,7 @@ const BidRequests = () => {
        <tr>
         <th>1</th>
         <td>{oneData.job_title}</td>
-        <td>Bidder : {oneData.email}</td>
+        <td>{oneData.email}</td>
         <td>{oneData.deadline}</td>
         <td>{oneData.price}</td>
         <td className="font-bold">{oneData.status}</td>
