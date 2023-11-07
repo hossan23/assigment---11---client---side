@@ -52,7 +52,11 @@ const Navbar = () => {
        {links}
       </ul>
      </div>
-     <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+     {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
+     <Link to="/" className="flex justify-center items-center">
+      <img src="https://i.ibb.co/0YXxypZ/freelance-1.png" alt="" />
+      <span className="text-lg font-medium">FlexiGig</span>
+     </Link>
     </div>
     <div className="navbar-center hidden lg:flex">
      <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -67,7 +71,7 @@ const Navbar = () => {
        </Link>
       </div>
      ) : (
-      <Link to="/login" className="btn btn-info capitalize">
+      <Link to="/login" className="btn btn-info capitalize font-bold">
        Login
       </Link>
      )}

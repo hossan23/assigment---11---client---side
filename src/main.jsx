@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorElement from './pages/ErrorElement';
-
 import Root from './Root';
 import AddJobs from './pages/AddJobs';
 
@@ -14,7 +13,6 @@ import AuthProvider from './AuthProvider';
 import BidRequests from './pages/BidRequests';
 import PrivateRoute from './PrivateRoute';
 import Home from './pages/home/Home';
-
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import JobDetails from './pages/home/JobDetails';
 import MyBids from './pages/myBids/MyBids';

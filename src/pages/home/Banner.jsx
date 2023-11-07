@@ -8,8 +8,8 @@ const Banner = () => {
      </h1>
      <p className="text-xl">Millions of people use freeio.com to turn their ideas into reality.</p>
 
-     <button className="btn btn-success mr-4 text-white">Find Work</button>
-     <button className="btn btn-success text-white">Find Talent</button>
+     <button className="btn btn-info mr-4 text-white">Find Work</button>
+     <button className="btn btn-info text-white">Find Talent</button>
     </div>
     <div className="flex-1">
      <img src="https://freeio-app-nextjs.vercel.app/_next/image?url=%2Fimages%2Fabout%2Fhome4-hero-element-1.png&w=750&q=75" alt="" />

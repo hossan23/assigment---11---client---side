@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -7,6 +7,9 @@ import ErrorElement from './ErrorElement';
 
 const BidRequests = () => {
  const { user } = useContext(AuthContext);
+ useEffect(() => {
+  document.title = 'FlexiGig | Bid Requests';
+ }, []);
  const {
   isPending,
   error,

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
 import axios from 'axios';
@@ -8,6 +8,9 @@ const UpdateMyPostedJobs = () => {
  const data = useLoaderData();
  const { user } = useContext(AuthContext);
  const navigate = useNavigate();
+ useEffect(() => {
+  document.title = 'FlexiGig | Update My Jobs';
+ }, []);
 
  const { _id } = data;
  const HandleUpdateJobs = e => {

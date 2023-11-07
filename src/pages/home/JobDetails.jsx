@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider';
 import axios from 'axios';
@@ -6,6 +6,9 @@ import swal from 'sweetalert';
 
 const JobDetails = () => {
  const { user } = useContext(AuthContext);
+ useEffect(() => {
+  document.title = 'FlexiGig | Job Details';
+ }, []);
  const data = useLoaderData();
  const navigate = useNavigate();
  //  console.log(Object.keys(data).join(','));

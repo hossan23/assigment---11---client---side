@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../AuthProvider';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -33,6 +33,10 @@ const AddJobs = () => {
 
   console.log('hi');
  };
+
+ useEffect(() => {
+  document.title = 'FlexiGig | Add Job';
+ }, []);
  return (
   <div className="my-10 flex justify-center items-center">
    <form className="max-w-xl mx-auto bg-white p-6 rounded shadow-lg" onSubmit={handleAddJob}>

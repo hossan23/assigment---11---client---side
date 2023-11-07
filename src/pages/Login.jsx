@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -8,6 +8,9 @@ const Login = () => {
  const navigate = useNavigate();
  const location = useLocation();
  const [error, setError] = useState();
+ useEffect(() => {
+  document.title = 'FlexiGig | Login';
+ }, []);
 
  const handleLogin = e => {
   e.preventDefault();

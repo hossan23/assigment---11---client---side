@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../AuthProvider';
 import ErrorElement from './ErrorElement';
 import MyPostedJobsCard from './MyPostedJobsCard';
@@ -8,6 +8,9 @@ import Loader from '../Loader';
 
 const MyPostedJobs = () => {
  const { user } = useContext(AuthContext);
+ useEffect(() => {
+  document.title = 'FlexiGig | My Posted jobs';
+ }, []);
 
  const { isPending, error, data, refetch } = useQuery({
   queryKey: ['myPostedJobs'],

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
@@ -8,6 +8,9 @@ const Register = () => {
  const { register } = useContext(AuthContext);
  const [error, setError] = useState();
  const navigate = useNavigate();
+ useEffect(() => {
+  document.title = 'FlexiGig | Register';
+ }, []);
 
  const handleRegister = e => {
   e.preventDefault();
