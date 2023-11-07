@@ -62,7 +62,7 @@ const JobDetails = () => {
         <div className="grid grid-cols-1 gap-4">
          <div>
           <label htmlFor="price" className="block text-lg font-medium text-gray-700">
-           Price (your bidding amount)
+           Price <span className="text-sm">(Your bidding amount)</span>
           </label>
           <input type="text" name="price" className="form-input w-full p-3 rounded-lg " placeholder={`Enter your bid amount from minimum ${min_price} - ${max_price} maximum`} />
          </div>
@@ -74,7 +74,7 @@ const JobDetails = () => {
          </div>
          <div>
           <label htmlFor="email" className="block text-lg font-medium text-gray-700">
-           Email (Who is bidding)
+           Email <span className="text-sm">(Who is bidding)</span>
           </label>
           <input
            type="email"
@@ -87,7 +87,7 @@ const JobDetails = () => {
          </div>
          <div>
           <label htmlFor="buyerEmail" className="block text-lg font-medium text-gray-700 ">
-           Buyer Email (Job owner)
+           Buyer Email <span className="text-sm">(Job owner)</span>
           </label>
           <input
            type="email"

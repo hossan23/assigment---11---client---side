@@ -8,11 +8,24 @@ const MyPostedJobsCard = ({ myData, refetch }) => {
  const { _id, email, job_title, deadline, description, category, min_price, max_price } = myData;
 
  const handleDelete = id => {
-  axios.delete(`http://localhost:5000/jobs/${id}`).then(res => {
-   if (res.data.deletedCount > 0) {
-    swal('Good job!', 'Deleted Successfully!', 'success');
-    console.log(res.data);
-    refetch();
+  swal({
+   title: 'Are you sure?',
+   text: 'Once deleted, you will not be able to recover this Job advertisement',
+   icon: 'warning',
+   buttons: true,
+   dangerMode: true,
+  }).then(willDelete => {
+   if (willDelete) {
+    axios.delete(`http://localhost:5000/jobs/${id}`).then(res => {
+     if (res.data.deletedCount > 0) {
+      swal('Poof! Job advertisement has been deleted!', {
+       icon: 'success',
+      });
+      refetch();
+     }
+    });
+   } else {
+    swal('Your Job advertisement is safe!');
    }
   });
  };

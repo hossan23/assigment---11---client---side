@@ -25,7 +25,7 @@ const UpdateMyPostedJobs = () => {
    .patch(`http://localhost:5000/jobs/${_id}`, myData)
    .then(res => {
     if (res.data.modifiedCount) {
-     swal('Good job!', 'Bid Successful!', 'success');
+     swal('Good job!', 'Updated Successfully!', 'success');
      navigate('/myPostedJobs');
      console.log(res.data);
     }
