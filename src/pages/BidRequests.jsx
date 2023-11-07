@@ -17,7 +17,7 @@ const BidRequests = () => {
   data: allData,
  } = useQuery({
   queryKey: ['repoData'],
-  queryFn: () => axios.get(`http://localhost:5000/bids`).then(res => res.data),
+  queryFn: () => axios.get(`http://localhost:5000/bids`, { withCredentials: true }).then(res => res.data),
  });
 
  const filter = allData?.filter(oneData => oneData.email !== user.email);

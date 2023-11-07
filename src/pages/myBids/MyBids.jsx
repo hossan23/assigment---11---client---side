@@ -17,8 +17,9 @@ const MyBids = () => {
   data: allData,
  } = useQuery({
   queryKey: ['repoData'],
-  queryFn: () => axios.get(`http://localhost:5000/bids?email=${user?.email}`).then(res => res.data),
+  queryFn: () => axios.get(`http://localhost:5000/bids`, { withCredentials: true }).then(res => res.data),
  });
+ const filter = allData?.filter(oneData => oneData.email === user.email);
 
  if (isPending) return <Loader></Loader>;
 
@@ -51,7 +52,7 @@ const MyBids = () => {
        <th>Respond</th>
       </tr>
      </thead>
-     {allData.map(oneData => (
+     {filter.map(oneData => (
       <tbody key={oneData._id} className="text-lg">
        {/* row 1 */}
        <tr>

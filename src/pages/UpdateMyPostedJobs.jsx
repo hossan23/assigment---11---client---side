@@ -36,8 +36,6 @@ const UpdateMyPostedJobs = () => {
    .catch(error => {
     console.log(error.message);
    });
-
-  console.log('hi');
  };
  return (
   <div className="my-10 flex justify-center items-center">
@@ -64,7 +62,7 @@ const UpdateMyPostedJobs = () => {
      <label htmlFor="description" className="block text-gray-700 font-bold mb-2">
       Description
      </label>
-     <textarea id="description" name="description" className="input input-bordered focus:outline-none w-full font-medium" defaultValue={data.description} rows="4"></textarea>
+     <textarea id="description" name="description" className="input input-bordered focus:outline-none w-full font-medium h-fit" defaultValue={data.description} rows="4"></textarea>
     </div>
     <div className="mb-4">
      <label htmlFor="category" className="block text-gray-700 font-bold mb-2">

@@ -18,6 +18,7 @@ import JobDetails from './pages/home/JobDetails';
 import MyBids from './pages/myBids/MyBids';
 import MyPostedJobs from './pages/MyPostedJobs';
 import UpdateMyPostedJobs from './pages/UpdateMyPostedJobs';
+import axios from 'axios';
 
 const router = createBrowserRouter([
  {
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
       <JobDetails></JobDetails>
      </PrivateRoute>
     ),
-    loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`),
+    loader: ({ params }) => axios.get(`http://localhost:5000/jobs/${params.id}`, { withCredentials: true }).then(res => res.data),
    },
    {
     path: '/updateMyJobs/:id',
@@ -85,7 +86,7 @@ const router = createBrowserRouter([
       <UpdateMyPostedJobs></UpdateMyPostedJobs>
      </PrivateRoute>
     ),
-    loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`),
+    loader: ({ params }) => axios.get(`http://localhost:5000/jobs/${params.id}`, { withCredentials: true }).then(res => res.data),
    },
   ],
  },

@@ -5,6 +5,7 @@ import { AuthContext } from '../AuthProvider';
 import ErrorElement from './ErrorElement';
 import MyPostedJobsCard from './MyPostedJobsCard';
 import Loader from '../Loader';
+import axios from 'axios';
 
 const MyPostedJobs = () => {
  const { user } = useContext(AuthContext);
@@ -14,12 +15,14 @@ const MyPostedJobs = () => {
 
  const { isPending, error, data, refetch } = useQuery({
   queryKey: ['myPostedJobs'],
-  queryFn: async () => {
-   const data = await fetch(`http://localhost:5000/jobs?email=${user?.email}`);
-   return await data.json();
-  },
- });
+  queryFn: async () => axios.get(`http://localhost:5000/jobs?email=${user?.email}`, { withCredentials: true }).then(res => res.data),
 
+  //   {
+  //     const data = await fetch(`http://localhost:5000/jobs?email=${user?.email}`);
+  //     return await data.json();
+  //    }
+  //  { withCredentials: true }
+ });
  if (isPending) return <Loader></Loader>;
 
  if (error) return <ErrorElement></ErrorElement>;

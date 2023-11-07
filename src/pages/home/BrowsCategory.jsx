@@ -10,7 +10,7 @@ const BrowsCategory = () => {
  //   const { _id, email, job_title, deadline, description, category, min_price, max_price } = data;
 
  useEffect(() => {
-  axios.get('http://localhost:5000/jobs').then(res => {
+  axios.get('http://localhost:5000/jobs', { withCredentials: true }).then(res => {
    setAllData(res.data);
   });
  }, []);
