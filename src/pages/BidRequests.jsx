@@ -1,5 +1,60 @@
+import { useContext } from 'react';
+import { AuthContext } from '../AuthProvider';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import Loader from '../Loader';
+import ErrorElement from './ErrorElement';
+
 const BidRequests = () => {
- return <div>bid requests</div>;
+ const { user } = useContext(AuthContext);
+ const {
+  isPending,
+  error,
+  data: allData,
+ } = useQuery({
+  queryKey: ['repoData'],
+  queryFn: () => axios.get(`http://localhost:5000/bids?email=${user?.email}`).then(res => res.data),
+ });
+
+ if (isPending) return <Loader></Loader>;
+
+ if (error) return <ErrorElement></ErrorElement>;
+
+ console.log(allData);
+ return (
+  <div>
+   <div className="overflow-x-auto">
+    <h1>Bid request</h1>
+    <table className="table">
+     {/* head */}
+     <thead>
+      <tr>
+       <th></th>
+       <th>Job Title</th>
+       <th>Email</th>
+       <th>Deadline</th>
+       <th>Status</th>
+       <th>Complete button</th>
+      </tr>
+     </thead>
+     {allData.map(oneData => (
+      <tbody key={oneData._id}>
+       {/* row 1 */}
+       <tr>
+        <th>1</th>
+        <td>{oneData.job_title}</td>
+        <td>{oneData.email}</td>
+        <td>{oneData.deadline}</td>
+        <td className="font-bold">Pending</td>
+        <td>Blue</td>
+       </tr>
+       {/* row 2 */}
+      </tbody>
+     ))}
+    </table>
+   </div>
+  </div>
+ );
 };
 
 export default BidRequests;
