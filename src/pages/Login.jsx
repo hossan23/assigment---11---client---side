@@ -18,7 +18,7 @@ const Login = () => {
    .then(res => {
     form.reset();
     swal('Good job!', 'Logged in Successfully!', 'success');
-    navigate(location?.pathname ? location.state : '/');
+    navigate(location?.state ? location?.state : '/');
     console.log(res.user);
    })
    .catch(error => {
