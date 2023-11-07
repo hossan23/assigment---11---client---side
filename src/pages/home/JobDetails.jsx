@@ -19,6 +19,7 @@ const JobDetails = () => {
   const email = form.email.value;
   const buyerEmail = form.buyerEmail.value;
   const bid_Project_Data = {
+   job_title,
    price,
    deadline,
    email,
