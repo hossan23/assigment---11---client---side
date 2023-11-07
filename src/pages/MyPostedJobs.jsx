@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider';
 import ErrorElement from './ErrorElement';
-import MyPostedJobsCard from './MypostedJobsCard';
+import MyPostedJobsCard from './MyPostedJobsCard';
 import Loader from '../Loader';
 
 const MyPostedJobs = () => {
@@ -22,7 +22,7 @@ const MyPostedJobs = () => {
  if (error) return <ErrorElement></ErrorElement>;
 
  return (
-  <div className="grid grid-cols-4 gap-4">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
    {data.map(myData => (
     <MyPostedJobsCard key={myData._id} myData={myData} refetch={refetch}></MyPostedJobsCard>
    ))}

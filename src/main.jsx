@@ -19,6 +19,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import JobDetails from './pages/home/JobDetails';
 import MyBids from './pages/myBids/MyBids';
 import MyPostedJobs from './pages/MyPostedJobs';
+import UpdateMyPostedJobs from './pages/UpdateMyPostedJobs';
 
 const router = createBrowserRouter([
  {
@@ -75,6 +76,15 @@ const router = createBrowserRouter([
     element: (
      <PrivateRoute>
       <JobDetails></JobDetails>
+     </PrivateRoute>
+    ),
+    loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`),
+   },
+   {
+    path: '/updateMyJobs/:id',
+    element: (
+     <PrivateRoute>
+      <UpdateMyPostedJobs></UpdateMyPostedJobs>
      </PrivateRoute>
     ),
     loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`),

@@ -31,7 +31,7 @@ const MyPostedJobsCard = ({ myData, refetch }) => {
     <h2 className="text-gray-500">Description : {description}</h2>
 
     <div className="card-actions">
-     <Link to="/updateMyJobs" className="btn btn-primary">
+     <Link to={`/updateMyJobs/${_id}`} className="btn btn-primary">
       Update
      </Link>
      <Link onClick={() => handleDelete(_id)} className="btn bg-red-500">
