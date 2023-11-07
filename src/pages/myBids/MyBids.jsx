@@ -20,8 +20,6 @@ const MyBids = () => {
 
  if (error) return <ErrorElement></ErrorElement>;
 
- //  console.log(Object.keys(allData).join(','));
- console.log(allData);
  return (
   <div>
    <div className="overflow-x-auto">
@@ -43,7 +41,7 @@ const MyBids = () => {
        <tr>
         <th>1</th>
         <td>{oneData.job_title}</td>
-        <td>{oneData.buyerEmail}</td>
+        <td>Owner : {oneData.buyerEmail}</td>
         <td>{oneData.deadline}</td>
         <td className="font-bold">Pending</td>
         <td>Blue</td>
