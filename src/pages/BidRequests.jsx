@@ -47,7 +47,7 @@ const BidRequests = () => {
  };
 
  return (
-  <div className="h-screen">
+  <div className="">
    <h1 className="text-center text-2xl font-semibold my-4">Bid Request</h1>
    <hr />
    <div className="overflow-x-auto font-medium">

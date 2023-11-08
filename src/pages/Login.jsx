@@ -33,7 +33,11 @@ const Login = () => {
  const handleGoogle = e => {
   e.preventDefault();
   googleLogin()
-   .then()
+   .then(res => {
+    swal('Good job!', 'Logged in Successfully!', 'success');
+    navigate(location?.state ? location?.state : '/');
+    console.log(res.user);
+   })
    .catch(error => {
     console.log(error.message);
    });

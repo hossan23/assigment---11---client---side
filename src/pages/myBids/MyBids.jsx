@@ -54,7 +54,7 @@ const MyBids = () => {
  }
 
  return (
-  <div className="h-screen">
+  <div className="">
    <h1 className="text-center text-2xl font-semibold my-4">My Bids</h1>
    <div className="text-center my-2">
     <button onClick={handleSort} className="btn bg-gray-300">
