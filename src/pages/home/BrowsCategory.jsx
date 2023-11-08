@@ -28,21 +28,21 @@ const BrowsCategory = () => {
    </TabList>
 
    <TabPanel>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
      {webDevelopment?.map(data => (
       <BrowsCategoryCard key={data._id} data={data}></BrowsCategoryCard>
      ))}
     </div>
    </TabPanel>
    <TabPanel>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
      {digitalMarketing?.map(data => (
       <BrowsCategoryCard key={data._id} data={data}></BrowsCategoryCard>
      ))}
     </div>
    </TabPanel>
    <TabPanel>
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
      {graphicsDesign?.map(data => (
       <BrowsCategoryCard key={data._id} data={data}></BrowsCategoryCard>
      ))}

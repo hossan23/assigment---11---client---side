@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../AuthProvider';
 import ErrorElement from './ErrorElement';
@@ -16,20 +15,17 @@ const MyPostedJobs = () => {
  const { isPending, error, data, refetch } = useQuery({
   queryKey: ['myPostedJobs'],
   queryFn: async () => axios.get(`http://localhost:5000/jobs?email=${user?.email}`, { withCredentials: true }).then(res => res.data),
-
-  //   {
-  //     const data = await fetch(`http://localhost:5000/jobs?email=${user?.email}`);
-  //     return await data.json();
-  //    }
-  //  { withCredentials: true }
  });
+
+ const filter = data?.filter(oneData => oneData.email === user.email);
+
  if (isPending) return <Loader></Loader>;
 
  if (error) return <ErrorElement></ErrorElement>;
 
  return (
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-   {data.map(myData => (
+   {filter.map(myData => (
     <MyPostedJobsCard key={myData._id} myData={myData} refetch={refetch}></MyPostedJobsCard>
    ))}
   </div>

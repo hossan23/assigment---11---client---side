@@ -64,7 +64,7 @@ const Navbar = () => {
     <div className="navbar-end">
      {user ? (
       <div className="flex items-center justify-center space-x-2">
-       <h6 className="font-medium hidden md:block">{user?.displayName}</h6>
+       <h6 className="font-medium hidden md:block">{user?.email}</h6>
        {user.photoURL ? <img src={user?.photoURL} className="w-10 h-10 rounded-full" /> : ''}
        <Link onClick={handleLogout} className="btn btn-info capitalize">
         Logout
