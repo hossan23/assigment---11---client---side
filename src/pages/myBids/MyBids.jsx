@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../AuthProvider';
 import ErrorElement from '../ErrorElement';
 import axios from 'axios';
@@ -7,9 +7,13 @@ import Loader from '../../Loader';
 
 const MyBids = () => {
  const { user } = useContext(AuthContext);
+
+ const [sortBy, setSortBy] = useState(null); // Fixed the variable name here
+
  useEffect(() => {
   document.title = 'FlexiGig | My Bids';
  }, []);
+
  const {
   isPending,
   error,
@@ -34,9 +38,28 @@ const MyBids = () => {
    .catch(err => console.log(err.message));
  };
 
+ const handleSort = () => {
+  setSortBy('status'); // Corrected the variable name here
+ };
+
+ let sortedData = [...allData];
+
+ if (sortBy) {
+  sortedData.sort((a, b) => {
+   if (a[sortBy] < b[sortBy]) return -1;
+   if (a[sortBy] > b[sortBy]) return 1;
+   return 0;
+  });
+ }
+
  return (
   <div className="h-screen">
    <h1 className="text-center text-2xl font-semibold my-4">My Bids</h1>
+   <div className="text-center my-2">
+    <button onClick={handleSort} className="btn bg-gray-300">
+     Sort by Status
+    </button>
+   </div>
    <hr />
    <div className="overflow-x-auto font-medium">
     <table className="table">
@@ -51,7 +74,7 @@ const MyBids = () => {
        <th>Respond</th>
       </tr>
      </thead>
-     {allData.map(oneData => (
+     {sortedData.map(oneData => (
       <tbody key={oneData._id} className="text-lg">
        {/* row 1 */}
        <tr>

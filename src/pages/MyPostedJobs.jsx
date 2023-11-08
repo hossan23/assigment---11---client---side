@@ -5,6 +5,7 @@ import ErrorElement from './ErrorElement';
 import MyPostedJobsCard from './MyPostedJobsCard';
 import Loader from '../Loader';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const MyPostedJobs = () => {
  const { user } = useContext(AuthContext);
@@ -24,10 +25,21 @@ const MyPostedJobs = () => {
  if (error) return <ErrorElement></ErrorElement>;
 
  return (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-   {filter.map(myData => (
-    <MyPostedJobsCard key={myData._id} myData={myData} refetch={refetch}></MyPostedJobsCard>
-   ))}
+  <div>
+   {filter.length < 1 && (
+    <div className="text-center capitalize space-y-4">
+     <h1 className="text-3xl font-semibold">You have not posted a job yet</h1>
+     <p className="font-medium">you can click here to post a job</p>
+     <Link to="/addJob" className="btn btn-success text-white">
+      Add job
+     </Link>
+    </div>
+   )}
+   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    {filter.map(myData => (
+     <MyPostedJobsCard key={myData._id} myData={myData} refetch={refetch}></MyPostedJobsCard>
+    ))}
+   </div>
   </div>
  );
 };

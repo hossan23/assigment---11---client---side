@@ -36,7 +36,7 @@ const JobDetails = () => {
     if (res.data.insertedId) {
      swal('Good job!', 'Bid Successful!', 'success');
      navigate('/myBids');
-     console.log(res.data);
+     //  console.log(res.data);
     }
    })
    .catch(error => console.log(error.message));
