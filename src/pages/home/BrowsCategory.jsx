@@ -1,23 +1,24 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import BrowsCategoryCard from './BrowsCategoryCard';
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import Loader from '../../Loader';
+import ErrorElement from '../ErrorElement';
 
 const BrowsCategory = () => {
- const [allData, setAllData] = useState();
+ const { isPending, error, data } = useQuery({
+  queryKey: ['myPostedJobs'],
+  queryFn: async () => axios.get(`http://localhost:5000/jobs`).then(res => res.data),
+ });
 
- //   const { _id, email, job_title, deadline, description, category, min_price, max_price } = data;
+ if (isPending) return <Loader></Loader>;
 
- useEffect(() => {
-  axios.get('http://localhost:5000/jobs', { withCredentials: true }).then(res => {
-   setAllData(res.data);
-  });
- }, []);
+ if (error) return <ErrorElement></ErrorElement>;
 
- const webDevelopment = allData?.filter(data => data.category === 'Web Development');
- const digitalMarketing = allData?.filter(data => data.category === 'Digital Marketing');
- const graphicsDesign = allData?.filter(data => data.category === 'Graphics Design');
+ const webDevelopment = data?.filter(data => data.category === 'Web Development');
+ const digitalMarketing = data?.filter(data => data.category === 'Digital Marketing');
+ const graphicsDesign = data?.filter(data => data.category === 'Graphics Design');
 
  return (
   <Tabs>

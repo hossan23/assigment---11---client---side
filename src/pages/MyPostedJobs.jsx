@@ -14,7 +14,7 @@ const MyPostedJobs = () => {
 
  const { isPending, error, data, refetch } = useQuery({
   queryKey: ['myPostedJobs'],
-  queryFn: async () => axios.get(`http://localhost:5000/jobs?email=${user?.email}`, { withCredentials: true }).then(res => res.data),
+  queryFn: async () => axios.get(`http://localhost:5000/jobs`).then(res => res.data),
  });
 
  const filter = data?.filter(oneData => oneData.email === user.email);
