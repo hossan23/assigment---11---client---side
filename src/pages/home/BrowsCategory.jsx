@@ -9,7 +9,7 @@ import ErrorElement from '../ErrorElement';
 const BrowsCategory = () => {
  const { isPending, error, data } = useQuery({
   queryKey: ['myPostedJobs'],
-  queryFn: async () => axios.get(`http://localhost:5000/jobs`).then(res => res.data),
+  queryFn: async () => axios.get(`https://assignment-11-server-woad-six.vercel.app/jobs`).then(res => res.data),
  });
 
  if (isPending) return <Loader></Loader>;

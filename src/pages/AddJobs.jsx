@@ -19,7 +19,7 @@ const AddJobs = () => {
   const max_price = form.max_price.value;
   const myData = { email, job_title, deadline, description, category, min_price, max_price };
   axios
-   .post('http://localhost:5000/jobs', myData)
+   .post('https://assignment-11-server-woad-six.vercel.app/jobs', myData)
    .then(res => {
     if (res.data.insertedId) {
      swal('Good job!', 'Bid Successful!', 'success');

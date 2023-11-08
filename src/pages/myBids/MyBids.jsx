@@ -21,7 +21,7 @@ const MyBids = () => {
   data: allData,
  } = useQuery({
   queryKey: ['repoData'],
-  queryFn: () => axios.get(`http://localhost:5000/bids?email=${user.email}`, { withCredentials: true }).then(res => res.data),
+  queryFn: () => axios.get(`https://assignment-11-server-woad-six.vercel.app/bids?email=${user.email}`, { withCredentials: true }).then(res => res.data),
  });
 
  if (isPending) return <Loader></Loader>;
@@ -30,7 +30,7 @@ const MyBids = () => {
 
  const handleAccept = _id => {
   axios
-   .patch(`http://localhost:5000/bids/${_id}`, { status: 'completed' })
+   .patch(`https://assignment-11-server-woad-six.vercel.app/bids/${_id}`, { status: 'completed' })
    .then(res => {
     refetch();
     console.log(res.data);

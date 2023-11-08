@@ -25,7 +25,7 @@ const UpdateMyPostedJobs = () => {
   const max_price = form.max_price.value;
   const myData = { email, job_title, deadline, description, category, min_price, max_price };
   axios
-   .patch(`http://localhost:5000/jobs/${_id}`, myData)
+   .patch(`https://assignment-11-server-woad-six.vercel.app/jobs/${_id}`, myData)
    .then(res => {
     if (res.data.modifiedCount) {
      swal('Good job!', 'Updated Successfully!', 'success');

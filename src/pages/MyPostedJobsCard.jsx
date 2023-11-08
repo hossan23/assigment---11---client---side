@@ -16,7 +16,7 @@ const MyPostedJobsCard = ({ myData, refetch }) => {
    dangerMode: true,
   }).then(willDelete => {
    if (willDelete) {
-    axios.delete(`http://localhost:5000/jobs/${id}`).then(res => {
+    axios.delete(`https://assignment-11-server-woad-six.vercel.app/jobs/${id}`).then(res => {
      if (res.data.deletedCount > 0) {
       swal('Poof! Job advertisement has been deleted!', {
        icon: 'success',

@@ -17,7 +17,7 @@ const BidRequests = () => {
   data: allData,
  } = useQuery({
   queryKey: ['repoData'],
-  queryFn: () => axios.get(`http://localhost:5000/bids?buyerEmail=${user.email}`, { withCredentials: true }).then(res => res.data),
+  queryFn: () => axios.get(`https://assignment-11-server-woad-six.vercel.app/bids?buyerEmail=${user.email}`, { withCredentials: true }).then(res => res.data),
  });
 
  if (isPending) return <Loader></Loader>;
@@ -26,7 +26,7 @@ const BidRequests = () => {
 
  const handleAccept = _id => {
   axios
-   .patch(`http://localhost:5000/bids/${_id}`, { status: 'in progress' })
+   .patch(`https://assignment-11-server-woad-six.vercel.app/bids/${_id}`, { status: 'in progress' })
    .then(res => {
     refetch();
     console.log(res.data);
@@ -37,7 +37,7 @@ const BidRequests = () => {
 
  const handleReject = _id => {
   axios
-   .patch(`http://localhost:5000/bids/${_id}`, { status: 'canceled' })
+   .patch(`https://assignment-11-server-woad-six.vercel.app/bids/${_id}`, { status: 'canceled' })
    .then(res => {
     refetch();
     console.log(res.data);

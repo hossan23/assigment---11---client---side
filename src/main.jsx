@@ -77,7 +77,7 @@ const router = createBrowserRouter([
       <JobDetails></JobDetails>
      </PrivateRoute>
     ),
-    loader: ({ params }) => axios.get(`http://localhost:5000/jobs/${params.id}`, { withCredentials: true }).then(res => res.data),
+    loader: ({ params }) => axios.get(`https://assignment-11-server-woad-six.vercel.app/jobs/${params.id}`).then(res => res.data),
    },
    {
     path: '/updateMyJobs/:id',
@@ -86,7 +86,7 @@ const router = createBrowserRouter([
       <UpdateMyPostedJobs></UpdateMyPostedJobs>
      </PrivateRoute>
     ),
-    loader: ({ params }) => axios.get(`http://localhost:5000/jobs/${params.id}`, { withCredentials: true }).then(res => res.data),
+    loader: ({ params }) => axios.get(`https://assignment-11-server-woad-six.vercel.app/jobs/${params.id}`).then(res => res.data),
    },
   ],
  },

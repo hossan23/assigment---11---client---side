@@ -31,7 +31,7 @@ const JobDetails = () => {
   };
 
   axios
-   .post('http://localhost:5000/bids', bid_Project_Data)
+   .post('https://assignment-11-server-woad-six.vercel.app/bids', bid_Project_Data)
    .then(res => {
     if (res.data.insertedId) {
      swal('Good job!', 'Bid Successful!', 'success');

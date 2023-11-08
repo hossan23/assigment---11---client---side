@@ -15,7 +15,7 @@ const MyPostedJobs = () => {
 
  const { isPending, error, data, refetch } = useQuery({
   queryKey: ['myPostedJobs'],
-  queryFn: async () => axios.get(`http://localhost:5000/jobs`).then(res => res.data),
+  queryFn: async () => axios.get(`https://assignment-11-server-woad-six.vercel.app/jobs`).then(res => res.data),
  });
 
  const filter = data?.filter(oneData => oneData.email === user.email);

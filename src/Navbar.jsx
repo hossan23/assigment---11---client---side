@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
+import swal from 'sweetalert';
 
 const Navbar = () => {
  const { user, logout } = useContext(AuthContext);
@@ -32,15 +33,15 @@ const Navbar = () => {
  const handleLogout = e => {
   e.preventDefault();
   logout()
-   .then(console.log('logged out successfully'))
+   .then(swal('Good job!', 'logged out successfully!', 'success'))
    .catch(error => {
     console.log(error.message);
    });
  };
 
  return (
-  <div className="bg-red-100">
-   <div className="navbar bg-red-100 py-5 container mx-auto">
+  <div className="bg-green-100">
+   <div className="navbar bg-green-100 py-5 container mx-auto">
     <div className="navbar-start">
      <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
