@@ -8,7 +8,7 @@ import Loader from '../../Loader';
 const MyBids = () => {
  const { user } = useContext(AuthContext);
 
- const [sortBy, setSortBy] = useState(null); // Fixed the variable name here
+ const [sortBy, setSortBy] = useState(null);
 
  useEffect(() => {
   document.title = 'FlexiGig | My Bids';
@@ -30,7 +30,7 @@ const MyBids = () => {
 
  const handleAccept = _id => {
   axios
-   .patch(`http://localhost:5000/bids/${_id}`, { status: 'complete' })
+   .patch(`http://localhost:5000/bids/${_id}`, { status: 'completed' })
    .then(res => {
     refetch();
     console.log(res.data);
@@ -39,7 +39,8 @@ const MyBids = () => {
  };
 
  const handleSort = () => {
-  setSortBy('status'); // Corrected the variable name here
+  setSortBy('status');
+  refetch();
  };
 
  let sortedData = [...allData];
